@@ -1,0 +1,106 @@
+/// CREATE EVENT
+vx = 0;
+vy = 0;
+player_speed = 2;
+timer = 0;
+state = "IDLE";
+
+/// STEP EVENT
+anim_speed = 0.2;
+
+switch(state) {
+    case "ATTACK_SWORD_START": {
+        image_speed = 0;
+        vx = 0;
+        vy = 0;
+        timer = 15;
+        sprite_index = spr_player_attack_side;
+        state = "ATTACK_SWORD";
+        break;
+    }
+    case "ATTACK_SWORD": {
+        if (timer > 0) {
+            timer -= 1;
+        } else {
+            state = "IDLE";
+        }
+        break;
+    }
+    case "IDLE": {
+        image_speed = 0;
+        
+        vx = 0;
+        vy = 0;
+        if (Input.up) state = "UP";
+        if (Input.down) state = "DOWN";
+        if (Input.left) state = "LEFT";
+        if (Input.right) state = "RIGHT";
+        if (!Input.up && !Input.down && !Input.left && !Input.right) state = "IDLE";
+        break;
+    }
+    case "UP": {
+        image_speed = anim_speed;
+        sprite_index = spr_player_up;
+        image_xscale = 1;
+        vx = 0;
+        vy = -1 * player_speed;
+        
+        if (Input.up) state = "UP";
+        if (Input.down) state = "DOWN";
+        if (Input.left) state = "LEFT";
+        if (Input.right) state = "RIGHT";
+        if (!Input.up && !Input.down && !Input.left && !Input.right) state = "IDLE";
+        break;
+    }
+    case "DOWN": {
+        image_speed = anim_speed;
+        sprite_index = spr_player_down;
+        image_xscale = 1;
+        vx = 0;
+        vy = player_speed;
+        
+        if (Input.up) state = "UP";
+        if (Input.down) state = "DOWN";
+        if (Input.left) state = "LEFT";
+        if (Input.right) state = "RIGHT";
+        if (!Input.up && !Input.down && !Input.left && !Input.right) state = "IDLE";
+        break;
+    }
+    case "LEFT": {
+        image_speed = anim_speed;
+        sprite_index = spr_player_side;
+        image_xscale = 1;
+        vx = -1 * player_speed;
+        vy = 0
+        
+        if (Input.up) state = "UP";
+        if (Input.down) state = "DOWN";
+        if (Input.left) state = "LEFT";
+        if (Input.right) state = "RIGHT";
+        if (!Input.up && !Input.down && !Input.left && !Input.right) state = "IDLE";
+        if (Input.button_a) state = "ATTACK_SWORD_START";
+        break;
+    }
+    case "RIGHT": {
+        image_speed = anim_speed;
+        sprite_index = spr_player_side;
+        image_xscale = -1;
+        vx = player_speed;
+        vy = 0;
+        
+        if (Input.up) state = "UP";
+        if (Input.down) state = "DOWN";
+        if (Input.left) state = "LEFT";
+        if (Input.right) state = "RIGHT";
+        if (!Input.up && !Input.down && !Input.left && !Input.right) state = "IDLE";
+        break;
+    }
+}
+
+/*
+if ( abs( vy ) == 0) vx = (Input.right - Input.left) * player_speed;
+if ( abs( vx ) == 0) vy = (Input.down - Input.up) * player_speed;
+*/
+
+x += vx;
+y += vy;
