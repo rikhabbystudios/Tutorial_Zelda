@@ -7,15 +7,17 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_test_16</sprite>
-    <sprite>sprites\spr_test_32</sprite>
+    <sprite>sprites\spr_player_up</sprite>
+    <sprite>sprites\spr_player_down</sprite>
+    <sprite>sprites\spr_player_side</sprite>
+    <sprite>sprites\spr_player_attack_side</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_game</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_input</object>
+    <object>objects\Input</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
