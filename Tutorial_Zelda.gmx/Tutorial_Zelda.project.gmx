@@ -6,9 +6,10 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_test_16</sprite>
-    <sprite>sprites\spr_test_32</sprite>
+    <sprites name="player">
+      <sprite>sprites\spr_kiara_idle_alt</sprite>
+      <sprite>sprites\spr_player_side</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
